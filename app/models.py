@@ -42,7 +42,7 @@ class RestaurantPizza(db.Model, SerializerMixin):
         return f"{self.price}"
 
 
-class Pizzas(db.Model, SerializerMixin):
+class Pizza(db.Model, SerializerMixin):
     __tablename__ = "pizzas"
 
     id = db.Column(db.Integer, primary_key=True)
