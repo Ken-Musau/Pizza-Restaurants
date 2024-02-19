@@ -10,7 +10,7 @@ db = SQLAlchemy(metadata=metadata)
 
 
 class Restaurant(db.Model, SerializerMixin):
-    __tablename__ = 'Restaurant'
+    __tablename__ = 'restaurants'
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
@@ -26,7 +26,7 @@ class Restaurant(db.Model, SerializerMixin):
 class RestaurantPizza(db.Model, SerializerMixin):
     __tablename__ = "restaurantPizzas"
 
-    id = db.Column(db.Integer, pirimary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     price = db.Column(db.Integer)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
