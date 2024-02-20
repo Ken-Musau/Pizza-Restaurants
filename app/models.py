@@ -51,7 +51,7 @@ class Pizza(db.Model, SerializerMixin):
     __tablename__ = "pizzas"
 
     serialize_rules = ("-restaurantPizzas.pizza",)
-    serialize_only = ("-restaurantPizzas.pizza",)
+    # serialize_only = ("-restaurantPizzas.pizza",)
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
