@@ -12,6 +12,8 @@ db = SQLAlchemy(metadata=metadata)
 class Restaurant(db.Model, SerializerMixin):
     __tablename__ = 'restaurants'
 
+    serialize_rules = ("-restaurantPizzas.restaurant",)
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     address = db.Column(db.String)
@@ -25,6 +27,9 @@ class Restaurant(db.Model, SerializerMixin):
 
 class RestaurantPizza(db.Model, SerializerMixin):
     __tablename__ = "restaurantPizzas"
+
+    serialize_rules = ("-restaurant.restaurantPizzas",
+                       "-pizza.restaurantPizzas",)
 
     id = db.Column(db.Integer, primary_key=True)
     price = db.Column(db.Integer)
@@ -44,6 +49,9 @@ class RestaurantPizza(db.Model, SerializerMixin):
 
 class Pizza(db.Model, SerializerMixin):
     __tablename__ = "pizzas"
+
+    serialize_rules = ("-restaurantPizzas.pizza",)
+    serialize_only = ("-restaurantPizzas.pizza",)
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
